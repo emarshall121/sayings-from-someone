@@ -1,5 +1,7 @@
 // Kanye Stuff
 var kanyeEl = function() {
+
+  // API call to get random Kanye Quotes
   fetch("https://api.kanye.rest/")
     .then(function(response){
       return response.json();
@@ -12,6 +14,8 @@ var kanyeEl = function() {
   
   // Taylor Stuff
   var taylorEl = function() {
+
+    // API call to get random Taylor quotes
     fetch("https://api.taylor.rest")
       .then(function(response){
         return response.json();
@@ -21,6 +25,7 @@ var kanyeEl = function() {
         document.getElementById("taylorQuote").innerHTML = taylorQuote
     })
 
+    // API call to get random Taylor image
     fetch("https://api.taylor.rest/image")
         .then(function(response){
           return response.json();
