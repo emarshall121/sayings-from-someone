@@ -23,7 +23,19 @@ var kanyeEl = function() {
         document.getElementById("taylorQuote").innerHTML = taylorQuote
     })
     }
+
+    var taylorImage = function() {
+      fetch("https://api.taylor.rest/image")
+        .then(function(response){
+          return response.json();
+      })
+      .then(function(response){
+          console.log(response.url)
+          document.getElementById("taylorImg").setAttribute("src", response.url)
+      })
+      }
   
   kanyeEl();
   taylorEl();
+  taylorImage();
   
