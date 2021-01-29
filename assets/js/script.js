@@ -35,6 +35,7 @@ var now = dayjs().format('dddd, MMMM D, YYYY');
         var kanyeQuote = response.quote
         document.getElementById("kanyeQuote").innerHTML = kanyeQuote
         kanyeRandom();
+        document.getElementById("kanyeName").innerHTML = "Kanye West"
     })
     }
   
@@ -49,6 +50,7 @@ var now = dayjs().format('dddd, MMMM D, YYYY');
     .then(function(response){
         var taylorQuote = response.quote
         document.getElementById("taylorQuote").innerHTML = taylorQuote
+        document.getElementById("taylorName").innerHTML = "Taylor Swift"
     })
 
     // API call to get random Taylor image
