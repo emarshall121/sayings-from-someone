@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Londrina Solid', cursive;
+  text-align: center;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.card .card-content {
+  padding: 10px;
+}
+.quote {
+  font-family: 'oswald', sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.card .card-title {
+  margin-top: 10px;
+  font-size: 45px;
+  font-weight: 500;
+}  
+
+h1 {
+  margin-bottom: 10px;
+  color: #F44337;
+  text-shadow: 2px 2px 4px black;
+}
+
+h2 {
+  font-weight: 300;
+  margin-top: 10px;
+  color: #F44337;
+  text-shadow: 2px 2px 4px black;
+}
+
+h3{
+  font-weight: 100;
+  font-size: 35px;
+  color: #F44337;
+}
+
+img {
+  padding: 10px 0 0 0;
+}
+
