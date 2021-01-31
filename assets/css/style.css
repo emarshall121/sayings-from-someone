@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #f2f2f2;
+}
+
 .card .card-content {
   padding: 10px;
 }
@@ -23,16 +27,21 @@
 
 h1 {
   margin-bottom: 10px;
+  color: #F44337;
+  text-shadow: 2px 2px 4px black;
 }
 
 h2 {
   font-weight: 300;
   margin-top: 10px;
+  color: #F44337;
+  text-shadow: 2px 2px 4px black;
 }
 
 h3{
   font-weight: 100;
   font-size: 35px;
+  color: #F44337;
 }
 
 img {
