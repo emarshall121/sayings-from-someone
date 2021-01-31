@@ -6,15 +6,18 @@ var kanyeImg = [
   "https://officialpsds.com/imageview/rl/k2/rlk21j_large.png?1521316515", 
   "https://www.peanutsclothes.com/wp-content/uploads/2020/01/Kanye-West.png",
   "https://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Kanye-West-PNG-Transparent-Image-1-500x703.png",
-  "https://lh3.googleusercontent.com/proxy/5uBtCYuhc2qEm7JLbSA7R1O0oRKKgDnIOmpF-gpcxzx0fv0oRE--V9ZrU3eT2wzu8xPufci8fgwc5pGgCoVcr5BaxUDcJHV0b67NVrSnVf3LtfzDdCctwyGskYT_k9Z_ZTTfdecxVKpL",
   "https://freepngimg.com/thumb/kanye_west/9-2-kanye-west-png-file.png",
   "https://www.nicepng.com/png/full/69-694587_bad-pics-of-kanye-west.png",
-  "https://lh3.googleusercontent.com/proxy/rlZ7ZFooEx3j5qT0z7Al6HtuBcC44TW95l_2tucE3-VCxYpb9FXdWDYev7p6o2SgmAcqaDmkpAnSuyBoXPjVjBDBa7kQKOxIMtqwQoKzrFic6iZYpri5ltuDX2_vbA",
   "https://moscatolife.files.wordpress.com/2018/05/kanye_west.png?w=660"
 ];
 
 // Current date set as: day, month name/day, year (i.e. Monday, February 1, 2021)
 var now = dayjs().format('dddd, MMMM D, YYYY');
+function displayDate() {
+  document.getElementById("date").innerHTML=now
+}
+
+
 
 // Kanye Stuff
 
@@ -33,7 +36,7 @@ var now = dayjs().format('dddd, MMMM D, YYYY');
     })
     .then(function(response){
         var kanyeQuote = response.quote
-        document.getElementById("kanyeQuote").innerHTML = kanyeQuote
+        document.getElementById("kanyeQuote").innerHTML = `"${kanyeQuote}"`
         kanyeRandom();
         document.getElementById("kanyeName").innerHTML = "Kanye West"
     })
@@ -49,7 +52,7 @@ var now = dayjs().format('dddd, MMMM D, YYYY');
     })
     .then(function(response){
         var taylorQuote = response.quote
-        document.getElementById("taylorQuote").innerHTML = taylorQuote
+        document.getElementById("taylorQuote").innerHTML = `"${taylorQuote}"`
         document.getElementById("taylorName").innerHTML = "Taylor Swift"
     })
 
@@ -65,4 +68,5 @@ var now = dayjs().format('dddd, MMMM D, YYYY');
   
   kanyeEl();
   taylorEl();
+  displayDate();
   

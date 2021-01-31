@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Londrina Solid', cursive;
+  text-align: center;
+}
+
+.card .card-content {
+  padding: 10px;
+}
+.quote {
+  font-family: 'oswald', sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.card .card-title {
+  margin-top: 10px;
+  font-size: 45px;
+  font-weight: 500;
+}  
+
+h1 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+h3{
+  font-weight: 100;
+  font-size: 35px;
+}
+
+img {
+  padding: 10px 0 0 0;
+}
+

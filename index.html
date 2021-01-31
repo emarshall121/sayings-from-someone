@@ -4,13 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QOTD Generator</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+ <div class=container>
+  <h1>Sayings from Someone</h1>
+  <h2>Quote of the Day</h2>
+  <div class="divider"></div>
+  <h3 id="date"></h3>
+  
   <!-- Kanye Stuff -->
-  <div class="container-fluid">
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <div class="card z-depth-5">
+        <div class="card-image">
+          <img src="" id="kanyeImages" style="height:400px; width: 100%; object-fit: contain">
+          
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <span class="card-title name" id="kanyeName">Card Title</span>
+        </div>
+        <div class="card-content quote flow-text" id="kanyeQuote">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Taylor Stuff-->
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <div class="card z-depth-5">
+        <div class="card-image">
+          <img src="" id="taylorImg" style="height:400px; width:100%; object-fit: contain">
+          
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <span class="card-title name" id="taylorName">Card Title</span>
+        </div>
+        <div class="card-content quote flow-text" id="taylorQuote">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ 
+  <!-- <div class="container-fluid">
     <div class ="row" id=kanyeStuff></div>
       <div class="col-4">
         <div id="kanyeName" class="names"></div>
@@ -19,10 +64,8 @@
       <div class="col-8 bg-danger">
         <div id=kanyeQuote></div>
       </div>
-  </div>
-
-  <!--Taylor Stuff-->
-  <div class="container-fluid">
+  </div> -->
+  <!-- <div class="container-fluid">
     <div class ="row" id=taylorStuff></div>
       <div class="col-4">
         <div id="taylorName" class="names"></div>
@@ -31,8 +74,9 @@
       <div class="col-8 bg-danger">
         <div id=taylorQuote></div>
       </div>
-  </div>
+  </div> -->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>
 </body>
