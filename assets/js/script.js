@@ -69,7 +69,7 @@ function displayDate() {
         //favoriteQuotesObj.quote.push(taylorQuote)
         document.getElementById("taylorQuote").innerHTML = `"${taylorQuote}"`
         document.getElementById("taylorName").innerHTML = "Taylor Swift"
-        socialStatus()
+        //socialStatus()
     })
 
     // API call to get random Taylor image
@@ -138,11 +138,13 @@ var saveDislikesToStorage = function() {
 
 var socialStatus = function () {
  
-  var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))    
+  var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
+    
   
   if(getLocalStorage !== null){
-
+    
       if(getLocalStorage.likes.length !== 0 && getLocalStorage.dislikes.length !== 0) {
+        
         quotesObj.likes.push(getLocalStorage.likes)
         quotesObj.dislikes.push(getLocalStorage.dislikes)
         likeCount.innerHTML = quotesObj.likes
