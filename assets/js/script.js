@@ -65,8 +65,8 @@ function displayDate() {
     })
     .then(function(response){
         var taylorQuote = response.quote
-        quotesObj.quote.push(taylorQuote)
-        favoriteQuotesObj.quote.push(taylor)
+        //quotesObj.quote.push(taylorQuote)
+        //favoriteQuotesObj.quote.push(taylorQuote)
         document.getElementById("taylorQuote").innerHTML = `"${taylorQuote}"`
         document.getElementById("taylorName").innerHTML = "Taylor Swift"
         socialStatus()
@@ -167,6 +167,7 @@ var socialStatus = function () {
 var updateSocialStatus = function() {
 
   var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote[0]))
+  console.log(getLocalStorage.likes);
     likeCount.innerHTML = getLocalStorage.likes
     disLikeCount.innerHTML = getLocalStorage.dislikes  
 }
@@ -175,16 +176,18 @@ var updateSocialStatus = function() {
 // -------Favorite Button save to local storage----//
 
 var favBtnHandler = function(event){
-  var favBtn = favoriteBtn.value
+  var favBtn = favoriteBtn.getAttribute('value')
+  console.log(favBtn);
   
   if(favBtn === "not-favorite") {  
-      favoriteBtn.value = "is-favorite"
+      favoriteBtn.setAttribute('value','is-favorite')
       favClass.classList.add('fav-btn')
       favoriteQuote()
+      return
       
       }
       else if (favBtn === 'is-favorite'){
-      favoriteBtn.value="not-favorite"
+      favoriteBtn.setAttribute('value', "not-favorite")
       favClass.classList.remove('fav-btn')
       deleteFavorite() 
          
@@ -324,6 +327,15 @@ var deleteFavorite = function(){
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, 'opacity');
       });
+
+
+      var test = function() {
+        alert('test')
+      }     
+      // ------event listeners-------------------//
+likeBtn.addEventListener('click', saveLikesToStorage)
+dislikeBtn.addEventListener('click', saveDislikesToStorage)
+favoriteBtn.addEventListener('click', favBtnHandler)
   
 
 
