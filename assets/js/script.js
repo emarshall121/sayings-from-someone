@@ -1,9 +1,15 @@
-var likeBtn = document.getElementById('like-btn');
-var dislikeBtn = document.getElementById('dislike-btn')
-var favoriteBtn = document.getElementById('favorite-btn')
-var favClass = document.getElementById('favorite')
-var likeCount = document.getElementById('like-cnt')
-var disLikeCount = document.getElementById('dislike-cnt')
+var kanyeLikeBtn = document.getElementById('like-btn');
+var taylorLikeBtn = document.getElementById('taylor-like-btn');
+var kanyeDislikeBtn = document.getElementById('dislike-btn')
+var taylorDislikeBtn = document.getElementById('taylor-dislike-btn')
+var kanyeFavoriteBtn = document.getElementById('kanye-favorite-btn')
+var taylorFavoriteBtn = document.getElementById('taylor-favorite-btn')
+var kanyeFavClass = document.getElementById('kanye-favorite')
+var taylorFavClass = document.getElementById('taylor-favorite')
+var kanyeLikeCount = document.getElementById('kanye-like-cnt')
+var taylorLikeCount = document.getElementById('taylor-like-cnt')
+var kanyeDisLikeCount = document.getElementById('kanye-dislike-cnt')
+var taylorDisLikeCount = document.getElementById('taylor-dislike-cnt')
 var headerQuote = document.getElementById('header-quote')
 var favoriteList = document.getElementById('favorite-list')
 
@@ -47,11 +53,11 @@ function displayDate() {
     .then(function(response){
         var kanyeQuote = response.quote
         quotesObj.quote.push(kanyeQuote)
-        favoriteQuotesObj.quote.push(kanyeQuote)
+        favoriteQuotesObj.quote.push('"'+ kanyeQuote +'"' + "  " + "-Kanye West")
         document.getElementById("kanyeQuote").innerHTML = `"${kanyeQuote}"`
         kanyeRandom();
         document.getElementById("kanyeName").innerHTML = "Kanye West"
-        socialStatus()
+        kanyeLoadSocialStatus()
     })
     }
   
@@ -65,11 +71,11 @@ function displayDate() {
     })
     .then(function(response){
         var taylorQuote = response.quote
-        //quotesObj.quote.push(taylorQuote)
-        //favoriteQuotesObj.quote.push(taylorQuote)
+        quotesObj.quote.push(taylorQuote)
+        favoriteQuotesObj.quote.push('"' + taylorQuote + '"' + "  "+ "-Taylor Swift")
         document.getElementById("taylorQuote").innerHTML = `"${taylorQuote}"`
         document.getElementById("taylorName").innerHTML = "Taylor Swift"
-        //socialStatus()
+        taylorLoadSocialStatus()
     })
 
     // API call to get random Taylor image
@@ -89,39 +95,88 @@ function displayDate() {
       dislikes: []
     };
 
-    var testFun = function(){
-      headerQuote.innerHTML = '"' + quotesObj.quote[0] + '"'
-    }
+ 
 
+  // ---------Clear and start Fetch for Kanye and Taylor------//
+  var kanyeStartQuotes = function (){    
+     quotesObj = {
+      quote: [],
+      likes: [],
+      dislikes:[]
+    };
+    favoriteQuotesObj = {
+      quote: []
+    };
+    kanyeLikeCount.innerHTML = ""
+    kanyeDisLikeCount.innerHTML = ""
+    kanyeFavoriteBtn.setAttribute('value', "kanye-not-favorite")
+    KanyeFavClass.classList.remove('fav-btn')
+    kanyeEl();       
+  };
+
+  var taylorStartQuotes = function (){
+     quotesObj = {
+      quote: [],
+      likes: [],
+      dislikes: []
+    };
+    favoriteQuotesObj = {
+      quote: []
+    };
+    taylorLikeCount.innerHTML = ""
+    taylorDisLikeCount.innerHTML = ""
+    taylorFavoriteBtn.setAttribute('value', "taylor-not-favorite")
+    taylorFavClass.classList.remove('fav-btn')
+    
+    taylorEl();   
+  };
 // -----------------------------------------------//
 // --------Save Like count into local storage-----//
 
-var saveLikesToStorage = function() {
+var kanyeSaveLikesToStorage = function() {
   var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
   
   if (getLocalStorage === null) {
     quotesObj.likes++
     localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
-    updateSocialStatus()    
+    kanyeUpdateSocialStatus()    
   } 
   else {
       var currentLikes = JSON.parse(localStorage.getItem(quotesObj.quote))
       quotesObj.likes++;
       localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
-      updateSocialStatus()        
+      kanyeUpdateSocialStatus()        
   }  
-}
+};
+// -----------------------------------------------//
+
+//Taylor like to storage//
+var taylorSaveLikesToStorage = function() {
+  var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
+  
+  if (getLocalStorage === null) {
+    quotesObj.likes++
+    localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
+    taylorUpdateSocialStatus()    
+  } 
+  else {
+      var currentLikes = JSON.parse(localStorage.getItem(quotesObj.quote))
+      quotesObj.likes++;
+      localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
+      taylorUpdateSocialStatus()        
+  }  
+};
 // -----------------------------------------------//
 
 // ----------Save Dislike count to local storage-----//
 
-var saveDislikesToStorage = function() {
+var kanyeSaveDislikesToStorage = function() {
   var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
   
   if (getLocalStorage === null) {
     quotesObj.dislikes++
     localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
-    updateSocialStatus()
+    kanyeUpdateSocialStatus()
   } 
   else {
 
@@ -129,14 +184,36 @@ var saveDislikesToStorage = function() {
      
       quotesObj.dislikes++;        
       localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
-      updateSocialStatus()
+      kanyeUpdateSocialStatus()
   }  
 }
 // -----------------------------------------------//
 
-// --------------Load Social Status--------------//
+//Taylor dislike to storage//
+var taylorSaveDislikesToStorage = function() {
+  var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
+  
+  if (getLocalStorage === null) {
+    quotesObj.dislikes++
+    localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
+    taylorUpdateSocialStatus()
+  } 
+  else {
 
-var socialStatus = function () {
+    var currentSocial = JSON.parse(localStorage.getItem(quotesObj.quote))    
+     
+      quotesObj.dislikes++;        
+      localStorage.setItem(quotesObj.quote,JSON.stringify(quotesObj));
+      taylorUpdateSocialStatus()
+  }  
+}
+// -----------------------------------------------//
+
+// --------------Kanye and Taylor Load Social Status--------------//
+
+//Kanye Load Social Status//
+
+var kanyeLoadSocialStatus = function () {
  
   var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
     
@@ -147,50 +224,108 @@ var socialStatus = function () {
         
         quotesObj.likes.push(getLocalStorage.likes)
         quotesObj.dislikes.push(getLocalStorage.dislikes)
-        likeCount.innerHTML = quotesObj.likes
-        disLikeCount.innerHTML = quotesObj.dislikes
+        kanyeLikeCount.innerHTML = quotesObj.likes
+        kanyeDisLikeCount.innerHTML = quotesObj.dislikes
       } 
       else if (getLocalStorage.likes.length !== 0 && getLocalStorage.dislikes.length === 0){
         quotesObj.likes.push(getLocalStorage.likes)  
-        likeCount.innerHTML = quotesObj.likes
-        disLikeCount.innerHTML = quotesObj.dislikes  
+        kanyeLikeCount.innerHTML = quotesObj.likes
+        kanyeDisLikeCount.innerHTML = quotesObj.dislikes  
       } 
       else if (getLocalStorage.likes.length === 0 && getLocalStorage.dislikes.length !== 0){
        quotesObj.dislikes.push(getLocalStorage.dislikes)
-       likeCount.innerHTML = quotesObj.likes
-       disLikeCount.innerHTML = quotesObj.dislikes
+       kanyeLikeCount.innerHTML = quotesObj.likes
+       kanyeDisLikeCount.innerHTML = quotesObj.dislikes
+      }
+  }   
+}
+// ------------------------------------------------------------------------------------//
+// Taylor Load Social Status//
+var taylorLoadSocialStatus = function () {
+ 
+  var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote))
+    
+  
+  if(getLocalStorage !== null){
+    
+      if(getLocalStorage.likes.length !== 0 && getLocalStorage.dislikes.length !== 0) {
+        
+        quotesObj.likes.push(getLocalStorage.likes)
+        quotesObj.dislikes.push(getLocalStorage.dislikes)
+        taylorLikeCount.innerHTML = quotesObj.likes
+        taylorDisLikeCount.innerHTML = quotesObj.dislikes
+      } 
+      else if (getLocalStorage.likes.length !== 0 && getLocalStorage.dislikes.length === 0){
+        quotesObj.likes.push(getLocalStorage.likes)  
+        taylorLikeCount.innerHTML = quotesObj.likes
+        taylorDisLikeCount.innerHTML = quotesObj.dislikes  
+      } 
+      else if (getLocalStorage.likes.length === 0 && getLocalStorage.dislikes.length !== 0){
+       quotesObj.dislikes.push(getLocalStorage.dislikes)
+       taylorLikeCount.innerHTML = quotesObj.likes
+       taylorDisLikeCount.innerHTML = quotesObj.dislikes
       }
   }   
 }
 // -----------------------------------------------//
 
-// ---------------Update Social status------------//
+// ---------------Update Social status for Kanye and Taylor------------//
 
-var updateSocialStatus = function() {
+// Kanye Update Social Status//
+var kanyeUpdateSocialStatus = function() {
 
   var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote[0]))
-  console.log(getLocalStorage.likes);
-    likeCount.innerHTML = getLocalStorage.likes
-    disLikeCount.innerHTML = getLocalStorage.dislikes  
+    kanyeLikeCount.innerHTML = getLocalStorage.likes
+    kanyeDisLikeCount.innerHTML = getLocalStorage.dislikes  
+}
+// -------------------------------------------------//
+
+//Taylor Update to Social Status
+var taylorUpdateSocialStatus = function() {
+
+  var getLocalStorage = JSON.parse(localStorage.getItem(quotesObj.quote[0]))
+    taylorLikeCount.innerHTML = getLocalStorage.likes
+    taylorDisLikeCount.innerHTML = getLocalStorage.dislikes  
 }
 //-------------------------------------------------//
 
-// -------Favorite Button save to local storage----//
+// -------Favorite Button handlers----//
 
-var favBtnHandler = function(event){
-  var favBtn = favoriteBtn.getAttribute('value')
-  console.log(favBtn);
+// Kanye Favorite Btn Handler
+var kanyeFavBtnHandler = function(event){
+  var kanyeFavBtn = kanyeFavoriteBtn.getAttribute('value')
+  console.log(kanyeFavBtn);
   
-  if(favBtn === "not-favorite") {  
-      favoriteBtn.setAttribute('value','is-favorite')
-      favClass.classList.add('fav-btn')
+  if(kanyeFavBtn === "kanye-not-favorite") {  
+      kanyeFavoriteBtn.setAttribute('value','kanye-is-favorite')
+      kanyeFavClass.classList.add('fav-btn')
       favoriteQuote()
       return
       
       }
-      else if (favBtn === 'is-favorite'){
-      favoriteBtn.setAttribute('value', "not-favorite")
-      favClass.classList.remove('fav-btn')
+      else if (kanyeFavBtn === 'kanye-is-favorite'){
+      kanyeFavoriteBtn.setAttribute('value', "kanye-not-favorite")
+      KanyeFavClass.classList.remove('fav-btn')
+      deleteFavorite() 
+         
+      }
+  }
+  // -----------------------------------------------//
+
+var taylorFavBtnHandler = function(event){
+  var taylorFavBtn = taylorFavoriteBtn.getAttribute('value')
+  console.log(taylorFavBtn);
+  
+  if(taylorFavBtn === "taylor-not-favorite") {  
+      taylorFavoriteBtn.setAttribute('value','taylor-is-favorite')
+      taylorFavClass.classList.add('fav-btn')
+      favoriteQuote()
+      return
+      
+      }
+      else if (taylorFavBtn === 'taylor-is-favorite'){
+      taylorFavoriteBtn.setAttribute('value', "taylor-not-favorite")
+      taylorFavClass.classList.remove('fav-btn')
       deleteFavorite() 
          
       }
@@ -198,6 +333,7 @@ var favBtnHandler = function(event){
   // -----------------------------------------------//
 
   // ----------Favorite Quotes temp object---------//
+  
 var favoriteQuotesObj = {
   quote: []
 }
@@ -302,6 +438,7 @@ var deleteFavorite = function(){
         // favCardSpanAttrIcon.innerHTML = "close"
 
         var favSpanParagraph = document.createElement('p');
+        favSpanParagraph.setAttribute('class', 'quote')
         favSpanParagraph.innerHTML = favorite.quote[i]
 
         var favCardAction = document.createElement('div')
@@ -315,7 +452,7 @@ var deleteFavorite = function(){
         favColorDiv.appendChild(favCardDiv)
         favCardDiv.appendChild(favCardSpan)
         // favCardSpan.append(favCardSpanAttr)
-        // favCardSpanAttr.append(favCardSpanAttrIcon)
+        //favCardSpanAttr.append(favCardSpanAttrIcon)
         favCardSpan.appendChild(favSpanParagraph)
         favCardDiv.appendChild(favCardAction)
       }
@@ -335,16 +472,19 @@ var deleteFavorite = function(){
         alert('test')
       }     
       // ------event listeners-------------------//
-likeBtn.addEventListener('click', saveLikesToStorage)
-dislikeBtn.addEventListener('click', saveDislikesToStorage)
-favoriteBtn.addEventListener('click', favBtnHandler)
+kanyeLikeBtn.addEventListener('click', kanyeSaveLikesToStorage)
+taylorLikeBtn.addEventListener('click', taylorSaveLikesToStorage)
+kanyeDislikeBtn.addEventListener('click', kanyeSaveDislikesToStorage)
+taylorDislikeBtn.addEventListener('click', taylorSaveDislikesToStorage)
+kanyeFavoriteBtn.addEventListener('click', kanyeFavBtnHandler)
+taylorFavoriteBtn.addEventListener('click', taylorFavBtnHandler)
   
 
 
 
   
-  kanyeEl();
-  taylorEl();
+  // kanyeEl();
+  // taylorEl();
   displayDate();
   
 
