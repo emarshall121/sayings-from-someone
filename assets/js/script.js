@@ -110,7 +110,7 @@ function displayDate() {
     kanyeLikeCount.innerHTML = ""
     kanyeDisLikeCount.innerHTML = ""
     kanyeFavoriteBtn.setAttribute('value', "kanye-not-favorite")
-    KanyeFavClass.classList.remove('fav-btn')
+    kanyeFavClass.classList.remove('fav-btn')
     kanyeEl();       
   };
 
@@ -305,7 +305,7 @@ var kanyeFavBtnHandler = function(event){
       }
       else if (kanyeFavBtn === 'kanye-is-favorite'){
       kanyeFavoriteBtn.setAttribute('value', "kanye-not-favorite")
-      KanyeFavClass.classList.remove('fav-btn')
+      kanyeFavClass.classList.remove('fav-btn')
       deleteFavorite() 
          
       }
