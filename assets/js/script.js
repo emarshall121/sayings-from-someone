@@ -17,10 +17,14 @@ function displayDate() {
   document.getElementById("date").innerHTML=now
 }
 
-
+// Modal initialization and method
+document.addEventListener('DOMContentLoaded', function() {
+  var elem= document.querySelector('.modal'); 
+  var instance = M.Modal.init(elem); 
+  onclick="instance .open()"
+});
 
 // Kanye Stuff
-
   // function to pull random picture from kanyeImages array
   function kanyeRandom() {
     var randomNum = Math.floor(Math.random()*kanyeImg.length);
@@ -29,6 +33,12 @@ function displayDate() {
 
   // API call to get random Kanye Quote
   var kanyeEl = function() {
+
+    // Display Kayne card
+    document.getElementById("kanye").classList.remove("hidden");
+
+    // Hide Taylor card when Kanye is selected
+    // document.getElementById("taylor").style.display = 'none';
 
     fetch("https://api.kanye.rest/")
       .then(function(response){
@@ -44,6 +54,12 @@ function displayDate() {
   
   // Taylor Stuff
   var taylorEl = function() {
+  
+    // Display Taylor card
+    document.getElementById("taylor").classList.remove('hidden');
+
+    // Hide Kanye when Taylor is selected
+    // document.getElementById("kanye").style.display = 'none';
 
     // API call to get random Taylor quote
     fetch("https://api.taylor.rest")
@@ -64,9 +80,11 @@ function displayDate() {
       .then(function(response){
           document.getElementById("taylorImg").setAttribute("src", response.url)
       })
+      
+      console.log("taylor function ran");
     }
   
-  kanyeEl();
-  taylorEl();
+  // kanyeEl();
+  // taylorEl();
   displayDate();
   

@@ -12,14 +12,29 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
- <div class=container>
+  <div class=container>
   <h1>Sayings from Someone</h1>
   <h2>Quote of the Day</h2>
   <div class="divider"></div>
   <h3 id="date"></h3>
-  
+
+   <!-- Modal Trigger -->
+   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Choose Your Celebrity Quote</a>
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+       <h4>Choose your celebrity:</h4>
+       <a href="" onclick="kanyeEl()">Kanye West</a><br>
+       <a href="" onclick="taylorEl()">Taylor Swift</a>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Never Mind ;P</a>
+     </div>
+   </div>
+
   <!-- Kanye Stuff -->
-  <div class="row">
+  <div class="row hidden" id="kanye">
     <div class="col s8 offset-s2">
       <div class="card z-depth-5">
         <div class="card-image">
@@ -28,7 +43,7 @@
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="medium material-icons">favorite</i></a>
         </div>
         <div class="card-content">
-          <span class="card-title name" id="kanyeName">Card Title</span>
+          <span class="card-title name" id="kanyeName"></span>
         </div>
         <div class="card-content quote flow-text" id="kanyeQuote">
         </div>
@@ -37,16 +52,16 @@
   </div>
 
   <!--Taylor Stuff-->
-  <div class="row">
+  <div class="row hidden" id="taylor">
     <div class="col s8 offset-s2">
       <div class="card z-depth-5">
         <div class="card-image">
           <img src="" id="taylorImg" style="height:400px; width:100%; object-fit: contain">
           
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">favorite</i></a>
         </div>
         <div class="card-content">
-          <span class="card-title name" id="taylorName">Card Title</span>
+          <span class="card-title name" id="taylorName"></span>
         </div>
         <div class="card-content quote flow-text" id="taylorQuote">
         </div>
@@ -56,27 +71,6 @@
 
 </div>
  
-  <!-- <div class="container-fluid">
-    <div class ="row" id=kanyeStuff></div>
-      <div class="col-4">
-        <div id="kanyeName" class="names"></div>
-        <img id="kanyeImages" src="" style="height: 100%; width: 100%; object-fit: contain" alt="Kanye West">
-      </div>
-      <div class="col-8 bg-danger">
-        <div id=kanyeQuote></div>
-      </div>
-  </div> -->
-  <!-- <div class="container-fluid">
-    <div class ="row" id=taylorStuff></div>
-      <div class="col-4">
-        <div id="taylorName" class="names"></div>
-        <img id="taylorImg" src="" style="height: 100%; width: 100%; object-fit: contain" alt="Taylor Swift">
-      </div>
-      <div class="col-8 bg-danger">
-        <div id=taylorQuote></div>
-      </div>
-  </div> -->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>

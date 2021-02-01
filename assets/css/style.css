@@ -44,7 +44,38 @@ h3{
   color: #F44337;
 }
 
+a {
+  font-size: 20px;
+  color: #F44337;
+}
+
 img {
   padding: 10px 0 0 0;
+}
+
+.btn {
+  background-color: #383838;
+  box-shadow: 5px 5px 10px grey;
+  margin: 15px;
+}
+
+.btn:hover {
+  background-color: #f44337;
+}
+
+.brand-logo a {
+  text-align: left;
+}
+
+#kanye, .hidden {
+  display: none;
+}
+
+#taylor, .hidden{
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
