@@ -111,8 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(function(response){
           document.getElementById("taylorImg").setAttribute("src", response.url)
       })
-      
-      console.log("taylor function ran");
     }
 
 

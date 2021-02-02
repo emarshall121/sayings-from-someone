@@ -82,3 +82,14 @@ img {
 .social-cnt{
   padding-left: 5px;
 }
+
+nav {
+  background-color: #f44337;
+}
+
+nav .brand-logo.left {
+  left: 0.5rem;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
