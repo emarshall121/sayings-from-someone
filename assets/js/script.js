@@ -501,7 +501,18 @@ var deleteFavorite = function(){
         favCardDiv.appendChild(favCardAction)
       }
 
-    } 
+    } else  {
+            
+        var favListItemEmpty = document.createElement('li');
+        favListItemEmpty.setAttribute('class', 'collection-item');
+
+        var favParagraph = document.createElement('p');
+        favParagraph.setAttribute('class', 'quote')
+        favParagraph.innerHTML = "You Do Not Have Any Favorites Saved!" 
+
+        favoriteList.appendChild(favListItemEmpty)        
+        favListItemEmpty.appendChild(favParagraph)        
+    }
   }
   // ----Refresh the favorites modal on close------------//
   function removeAllFavorites(){
