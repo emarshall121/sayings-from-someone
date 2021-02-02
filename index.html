@@ -12,6 +12,19 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+  <!-- NAV BAR -->
+  <div>
+    <nav>
+        <div class="nav-wrapper nav">
+            <img src="./assets/image/Webp.net-resizeimage (6).png" class="brand-logo left" />           
+          <ul id="nav-mobile" class="right ">
+            <li> <a  onClick= "" class="black-text nav-text">Home</a></li>
+            <li><a href="#modal1" class="modal-trigger black-text nav-text"onClick= "return buildFavorite()" class = "black-text nav-text">Favorites</a></li>
+          </ul>
+        </div>
+      </nav>            
+</div>
+
  <div class=container>
   <h1>Sayings from Someone</h1>
   <h2>Quote of the Day</h2>
@@ -25,12 +38,17 @@
         <div class="card-image">
           <img src="" id="kanyeImages" style="height:400px; width: 100%; object-fit: contain">
           
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="medium material-icons">favorite</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red" id="kanye-favorite-btn" value= "kanye-not-favorite"><i class="medium material-icons"id="kanye-favorite">favorite</i></a> 
         </div>
         <div class="card-content">
           <span class="card-title name" id="kanyeName">Card Title</span>
         </div>
         <div class="card-content quote flow-text" id="kanyeQuote">
+        </div>
+        <div class="card-action right-align">
+          <a class="waves-effect waves-light red btn" id="like-btn"><i class="small material-icons btn-icon">thumb_up</i><span id="kanye-like-cnt" class="social-cnt"></span></a>
+            <a class="waves-effect waves-light red btn" id="dislike-btn"><i class="small material-icons btn-icon">thumb_down</i><span id="kanye-dislike-cnt" class="social-cnt"></span></a>
+
         </div>
       </div>
     </div>
@@ -43,12 +61,17 @@
         <div class="card-image">
           <img src="" id="taylorImg" style="height:400px; width:100%; object-fit: contain">
           
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red" id="taylor-favorite-btn" value= "taylor-not-favorite"><i class="medium material-icons"id="taylor-favorite">favorite</i></a>
         </div>
         <div class="card-content">
           <span class="card-title name" id="taylorName">Card Title</span>
         </div>
         <div class="card-content quote flow-text" id="taylorQuote">
+        </div>
+        <div class="card-action right-align">
+          <a class="waves-effect waves-light red btn" id="taylor-like-btn"><i class="small material-icons btn-icon">thumb_up</i><span id="taylor-like-cnt" class="social-cnt"></span></a>
+            <a class="waves-effect waves-light red btn" id="taylor-dislike-btn"><i class="small material-icons btn-icon">thumb_down</i><span id="taylor-dislike-cnt" class="social-cnt"></span></a>
+
         </div>
       </div>
     </div>
@@ -76,6 +99,24 @@
         <div id=taylorQuote></div>
       </div>
   </div> -->
+
+  <!-- Favorites Modal -->
+  <section class="favorite-modal">
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4>Favorites:</h4>
+        <ul class="collection" id="favorite-list">
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves btn-flat" >close</a>
+      </div>
+    </div>
+  </section>
+
+  <a class="waves-effect waves-light red btn" onclick="kanyeStartQuotes()">Kanye</a>
+<a class="waves-effect waves-light red btn" onclick="taylorStartQuotes()">Taylor</a>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
