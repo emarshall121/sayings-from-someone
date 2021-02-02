@@ -395,23 +395,24 @@ var favoriteQuote = function() {
   } 
   else {
     var favorite = JSON.parse(localStorage.getItem('favoriteQuotes')) 
-    console.log("this is the favorite", favorite);   
+      
 
     for(var i = 0; i < favorite.quote.length; i++){
-      var storedFavorite = favorite.quote[i]
+      var storedFavorite = favorite.quote[i]      
+      
       favoriteQuotesObj.quote.push(storedFavorite)
-      localStorage.removeItem('favoriteQuotes')         
+      localStorage.removeItem('favoriteQuotes')      
+    }     
+    if( favoriteQuotesObj.quote.length > 5) {
+      favoriteQuotesObj.quote.splice(-1,1)
 
-      if( favoriteQuotesObj.quote.length > 5) {
-        favoriteQuotesObj.quote.splice(4,1)
-        localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))        
-      } else {
+      localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))        
+    } else {
 
-        localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
-      }      
-    }         
+      localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
+    }          
   }
-  console.log(favoriteQuotesObj);  
+   
   }
 // -----------------------------------------------//
 
@@ -426,25 +427,27 @@ var deleteFavorite = function(){
     for(var i = 0; i < favorite.quote.length; i++){
 
       var storedFavorite = favorite.quote[i]
-      console.log("stored Favorite", storedFavorite);
+     
       favoriteQuotesObj.quote.push(storedFavorite)            
     }
-
-    localStorage.removeItem('favoriteQuotes')
+    localStorage.removeItem('favoriteQuotes')   
  
-    var favDeleteQuote = quotesObj.quote[0]
-    console.log('favorite delete',favDeleteQuote);
+    // var favDeleteQuote = quotesObj.quote[0]
+    // console.log('favorite delete',favDeleteQuote);   
 
-
-    favoriteQuotesObj.quote.splice(favoriteQuotesObj.quote[0],1) 
-    
-    if(favoriteQuotesObj.quote.length === 0) {
-      return
-    } else{
-      localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
-    }         
+    favoriteQuotesObj.quote.splice(storedFavorite,1)
     localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
-    }
+
+    
+      
+    
+    // if(favoriteQuotesObj.quote.length === 0) {   
+      
+    // } else{
+    //   localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
+    }         
+    
+    
   // ------------------------------------------------------------------------//
     
  
