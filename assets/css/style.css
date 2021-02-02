@@ -44,9 +44,17 @@ h3{
   color: #F44337;
 }
 
+h5:hover {
+  color: aqua;
+}
+
 a {
   font-size: 20px;
   color: #F44337;
+}
+
+.modal-footer a:hover {
+  color: aqua;
 }
 
 img {
@@ -66,16 +74,3 @@ img {
 .brand-logo a {
   text-align: left;
 }
-
-#kanye, .hidden {
-  display: none;
-}
-
-#taylor, .hidden{
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
-}
-

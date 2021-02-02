@@ -19,9 +19,9 @@ function displayDate() {
 
 // Modal initialization and method
 document.addEventListener('DOMContentLoaded', function() {
-  var elem= document.querySelector('.modal'); 
-  var instance = M.Modal.init(elem); 
-  onclick="instance .open()"
+  var elems= document.querySelector('.modal'); 
+  var instance = M.Modal.init(elems); 
+  onclick="instance.open()"
 });
 
 // Kanye Stuff
@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // API call to get random Kanye Quote
   var kanyeEl = function() {
 
-    // Display Kayne card
-    document.getElementById("kanye").classList.remove("hidden");
+    // Display Kanye card
+    document.getElementById("kanye").classList.remove("hide");
 
     // Hide Taylor card when Kanye is selected
-    // document.getElementById("taylor").style.display = 'none';
+    document.getElementById("taylor").classList.add("hide");
 
     fetch("https://api.kanye.rest/")
-      .then(function(response){
+   .then(function(response){
         return response.json();
     })
     .then(function(response){
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("kanyeQuote").innerHTML = `"${kanyeQuote}"`
         kanyeRandom();
         document.getElementById("kanyeName").innerHTML = "Kanye West"
+        console.log("kanye function ran");
     })
     }
   
@@ -56,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var taylorEl = function() {
   
     // Display Taylor card
-    document.getElementById("taylor").classList.remove('hidden');
+    document.getElementById("taylor").classList.remove('hide');
 
     // Hide Kanye when Taylor is selected
-    // document.getElementById("kanye").style.display = 'none';
+    document.getElementById("kanye").classList.add('hide');
 
     // API call to get random Taylor quote
     fetch("https://api.taylor.rest")
@@ -83,6 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       console.log("taylor function ran");
     }
+
+    document.getElementById("selectKanye").addEventListener("click", kanyeEl);
+    document.getElementById("selectTaylor").addEventListener("click", taylorEl);
   
   // kanyeEl();
   // taylorEl();
