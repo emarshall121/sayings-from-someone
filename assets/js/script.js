@@ -41,10 +41,14 @@ function displayDate() {
   document.getElementById("date").innerHTML=now
 }
 
-
+// Modal initialization and method
+document.addEventListener('DOMContentLoaded', function() {
+  var elems= document.querySelector('.modal'); 
+  var instance = M.Modal.init(elems); 
+  onclick="instance.open()"
+});
 
 // Kanye Stuff
-
   // function to pull random picture from kanyeImages array
   function kanyeRandom() {
     var randomNum = Math.floor(Math.random()*kanyeImg.length);
@@ -54,8 +58,14 @@ function displayDate() {
   // API call to get random Kanye Quote
   var kanyeEl = function() {
 
+    // Display Kanye card
+    document.getElementById("kanye").classList.remove("hide");
+
+    // Hide Taylor card when Kanye is selected
+    document.getElementById("taylor").classList.add("hide");
+
     fetch("https://api.kanye.rest/")
-      .then(function(response){
+   .then(function(response){
         return response.json();
     })
     .then(function(response){
@@ -65,12 +75,19 @@ function displayDate() {
         document.getElementById("kanyeQuote").innerHTML = `"${kanyeQuote}"`
         kanyeRandom();
         document.getElementById("kanyeName").innerHTML = "Kanye West"
+
         kanyeLoadSocialStatus()
     })
     }
   
   // Taylor Stuff
   var taylorEl = function() {
+  
+    // Display Taylor card
+    document.getElementById("taylor").classList.remove('hide');
+
+    // Hide Kanye when Taylor is selected
+    document.getElementById("kanye").classList.add('hide');
 
     // API call to get random Taylor quote
     fetch("https://api.taylor.rest")
@@ -94,7 +111,13 @@ function displayDate() {
       .then(function(response){
           document.getElementById("taylorImg").setAttribute("src", response.url)
       })
+      
+      console.log("taylor function ran");
     }
+
+
+    document.getElementById("selectKanye").addEventListener("click", kanyeEl);
+    document.getElementById("selectTaylor").addEventListener("click", taylorEl);
 
     // -----temp storage of current quote obj------//
     var quotesObj = {
@@ -503,9 +526,6 @@ kanyeDislikeBtn.addEventListener('click', kanyeSaveDislikesToStorage)
 taylorDislikeBtn.addEventListener('click', taylorSaveDislikesToStorage)
 kanyeFavoriteBtn.addEventListener('click', kanyeFavBtnHandler)
 taylorFavoriteBtn.addEventListener('click', taylorFavBtnHandler)
-  
-
-
 
   
   // kanyeEl();
