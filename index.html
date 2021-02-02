@@ -19,7 +19,7 @@
             <img src="./assets/image/Webp.net-resizeimage (6).png" class="brand-logo left" />           
           <ul id="nav-mobile" class="right ">
             <li> <a  onClick= "" class="black-text nav-text">Home</a></li>
-            <li><a href="#modal1" class="modal-trigger black-text nav-text"onClick= "return buildFavorite()" class = "black-text nav-text">Favorites</a></li>
+            <li><a href="#modal1" class="modal-trigger black-text nav-text"onClick= " return buildFavorite(); " class = "black-text nav-text">Favorites</a></li>
           </ul>
         </div>
       </nav>            
@@ -110,7 +110,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves btn-flat" >close</a>
+        <a href="#!" class="modal-close waves-effect waves btn-flat" onclick="removeAllOptions();">close</a>
       </div>
     </div>
   </section>
@@ -123,3 +123,4 @@
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
+
