@@ -118,7 +118,12 @@ function displayDate() {
     }
 
 
+<<<<<<< HEAD
    
+=======
+    document.getElementById("selectKanye").addEventListener("click", kanyeEl);
+    document.getElementById("selectTaylor").addEventListener("click", taylorEl);
+>>>>>>> 00d6cbd47890ff81c49e6897176c120997d55eec
 
     // -----temp storage of current quote obj------//
     var quotesObj = {
@@ -511,6 +516,7 @@ var deleteFavorite = function(){
 
         
       // ------event listeners-------------------//
+<<<<<<< HEAD
 document.getElementById("selectKanye").addEventListener("click", kanyeStartQuotes);
 document.getElementById("selectTaylor").addEventListener("click", taylorStartQuotes);
 
@@ -526,4 +532,13 @@ favoriteModalCloseBtn.addEventListener('click', removeAllFavorites);
  //----ON LOAD FUNCTIONS---//
 displayDate();
   
+=======
+kanyeLikeBtn.addEventListener('click', kanyeSaveLikesToStorage)
+taylorLikeBtn.addEventListener('click', taylorSaveLikesToStorage)
+kanyeDislikeBtn.addEventListener('click', kanyeSaveDislikesToStorage)
+taylorDislikeBtn.addEventListener('click', taylorSaveDislikesToStorage)
+kanyeFavoriteBtn.addEventListener('click', kanyeFavBtnHandler)
+taylorFavoriteBtn.addEventListener('click', taylorFavBtnHandler)
+
+>>>>>>> 00d6cbd47890ff81c49e6897176c120997d55eec
   
