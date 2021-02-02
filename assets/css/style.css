@@ -74,3 +74,11 @@ img {
 .brand-logo a {
   text-align: left;
 }
+
+.fav-btn{
+  color:#807f7f !important;
+}
+
+.social-cnt{
+  padding-left: 5px;
+}
