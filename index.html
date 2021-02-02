@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QOTD Generator</title>
+  <title>Sayings From Someone</title>
   <link rel="shortcut icon" type="image/jpg" href="https://static.thenounproject.com/png/89663-200.png"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,27 +12,42 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+
   <!-- NAV BAR -->
   <div>
     <nav>
         <div class="nav-wrapper nav">
-            <img src="./assets/image/Webp.net-resizeimage (6).png" class="brand-logo left" />           
+            <img src="./assets/image/Webp.net-resizeimage (6).png" class="brand-logo left - align" />           
           <ul id="nav-mobile" class="right ">
             <li> <a  onClick= "" class="black-text nav-text">Home</a></li>
-            <li><a href="#modal1" class="modal-trigger black-text nav-text"onClick= " return buildFavorite(); " class = "black-text nav-text">Favorites</a></li>
+            <li><a href="#modal2" class="modal-trigger black-text nav-text" id="fav-trigger-btn">Favorites</a></li>
           </ul>
         </div>
       </nav>            
 </div>
 
  <div class=container>
+
   <h1>Sayings from Someone</h1>
   <h2>Quote of the Day</h2>
   <div class="divider"></div>
   <h3 id="date"></h3>
-  
+
+   <!-- Modal Trigger -->
+   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Choose Your Celebrity Quote</a>
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+       <h4>Choose your celebrity:</h4>
+       <div class="divider"></div>
+       <h5 class="modal-close" id="selectKanye">Kanye West</h5>
+       <h5 class="modal-close" id="selectTaylor">Taylor Swift</h5>
+     </div>
+   </div>
+
   <!-- Kanye Stuff -->
-  <div class="row">
+  <div class="row hide" id="kanye">
     <div class="col s8 offset-s2">
       <div class="card z-depth-5">
         <div class="card-image">
@@ -41,7 +56,7 @@
           <a class="btn-floating halfway-fab waves-effect waves-light red" id="kanye-favorite-btn" value= "kanye-not-favorite"><i class="medium material-icons"id="kanye-favorite">favorite</i></a> 
         </div>
         <div class="card-content">
-          <span class="card-title name" id="kanyeName">Card Title</span>
+          <span class="card-title name" id="kanyeName"></span>
         </div>
         <div class="card-content quote flow-text" id="kanyeQuote">
         </div>
@@ -55,7 +70,7 @@
   </div>
 
   <!--Taylor Stuff-->
-  <div class="row">
+  <div class="row hide" id="taylor">
     <div class="col s8 offset-s2">
       <div class="card z-depth-5">
         <div class="card-image">
@@ -64,7 +79,7 @@
           <a class="btn-floating halfway-fab waves-effect waves-light red" id="taylor-favorite-btn" value= "taylor-not-favorite"><i class="medium material-icons"id="taylor-favorite">favorite</i></a>
         </div>
         <div class="card-content">
-          <span class="card-title name" id="taylorName">Card Title</span>
+          <span class="card-title name" id="taylorName"></span>
         </div>
         <div class="card-content quote flow-text" id="taylorQuote">
         </div>
@@ -103,24 +118,24 @@
   <!-- Favorites Modal -->
   <section class="favorite-modal">
     <!-- Modal Structure -->
-    <div id="modal1" class="modal modal-fixed-footer">
+    <div id="modal2" class="modal modal-fixed-footer">
       <div class="modal-content">
         <h4>Favorites:</h4>
         <ul class="collection" id="favorite-list">
         </ul>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves btn-flat" onclick="removeAllOptions();">close</a>
+        <a href="#!" class="modal-close waves-effect waves btn-flat" id="fav-close-btn">close</a>
       </div>
     </div>
   </section>
 
-  <a class="waves-effect waves-light red btn" onclick="kanyeStartQuotes()">Kanye</a>
-<a class="waves-effect waves-light red btn" onclick="taylorStartQuotes()">Taylor</a>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
+
 
