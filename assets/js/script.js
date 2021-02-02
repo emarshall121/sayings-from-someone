@@ -525,3 +525,4 @@ favoriteModalCloseBtn.addEventListener('click', removeAllFavorites);
 
  //----ON LOAD FUNCTIONS---//
 displayDate();
+  
