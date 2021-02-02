@@ -21,6 +21,9 @@ var favoriteList = document.getElementById('favorite-list')
 
 var deleteFavEl = document.getElementById('kanyeQuote')
 
+var favoritesModalEl = document.getElementById('fav-trigger-btn')
+var favoriteModalCloseBtn = document.getElementById('fav-close-btn')
+
 
 // Variable to hold images of Kanye West
 var kanyeImg = [
@@ -41,10 +44,14 @@ function displayDate() {
   document.getElementById("date").innerHTML=now
 }
 
-
+// Modal initialization and method
+// document.addEventListener('DOMContentLoaded', function() {
+//   var elems= document.querySelector('.modal'); 
+//   var instance = M.Modal.init(elems); 
+//   onclick="instance.open()"
+// });
 
 // Kanye Stuff
-
   // function to pull random picture from kanyeImages array
   function kanyeRandom() {
     var randomNum = Math.floor(Math.random()*kanyeImg.length);
@@ -54,8 +61,14 @@ function displayDate() {
   // API call to get random Kanye Quote
   var kanyeEl = function() {
 
+    // Display Kanye card
+    document.getElementById("kanye").classList.remove("hide");
+
+    // Hide Taylor card when Kanye is selected
+    document.getElementById("taylor").classList.add("hide");
+
     fetch("https://api.kanye.rest/")
-      .then(function(response){
+   .then(function(response){
         return response.json();
     })
     .then(function(response){
@@ -65,12 +78,19 @@ function displayDate() {
         document.getElementById("kanyeQuote").innerHTML = `"${kanyeQuote}"`
         kanyeRandom();
         document.getElementById("kanyeName").innerHTML = "Kanye West"
+
         kanyeLoadSocialStatus()
     })
     }
   
   // Taylor Stuff
   var taylorEl = function() {
+  
+    // Display Taylor card
+    document.getElementById("taylor").classList.remove('hide');
+
+    // Hide Kanye when Taylor is selected
+    document.getElementById("kanye").classList.add('hide');
 
     // API call to get random Taylor quote
     fetch("https://api.taylor.rest")
@@ -93,8 +113,12 @@ function displayDate() {
       })
       .then(function(response){
           document.getElementById("taylorImg").setAttribute("src", response.url)
-      })
+      })      
+      console.log("taylor function ran");
     }
+
+
+   
 
     // -----temp storage of current quote obj------//
     var quotesObj = {
@@ -452,14 +476,6 @@ var deleteFavorite = function(){
         var favCardSpan = document.createElement('span');
         favCardSpan.setAttribute('class', 'card-title');
 
-        // var favCardSpanAttr = document.createElement('a');
-        // favCardSpanAttr.setAttribute('class', 'waves-effect waves btn-flat right');          
-        // favCardSpanAttr.setAttribute('onclick', 'deleteFavoriteModal(this)')
-
-        // var favCardSpanAttrIcon = document.createElement('i')
-        // favCardSpanAttrIcon.setAttribute('class', 'material-icons')
-        // favCardSpanAttrIcon.innerHTML = "close"
-
         var favSpanParagraph = document.createElement('p');
         favSpanParagraph.setAttribute('class', 'quote')
         favSpanParagraph.innerHTML = favorite.quote[i]
@@ -474,21 +490,19 @@ var deleteFavorite = function(){
         favColDiv.appendChild(favColorDiv)
         favColorDiv.appendChild(favCardDiv)
         favCardDiv.appendChild(favCardSpan)
-        // favCardSpan.append(favCardSpanAttr)
-        //favCardSpanAttr.append(favCardSpanAttrIcon)
         favCardSpan.appendChild(favSpanParagraph)
         favCardDiv.appendChild(favCardAction)
       }
 
     } 
   }
-
-  function removeAllOptions(){
+  // ----Refresh the favorites modal on close------------//
+  function removeAllFavorites(){
     favoriteList.innerHTML=""
   }
   // ------------------------------------------------------------------//
 
-      // ---favorites Modal------//
+      // ---favorites Modal AND Modal initialization and method------//
       document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, 'opacity');
@@ -497,18 +511,17 @@ var deleteFavorite = function(){
 
         
       // ------event listeners-------------------//
-kanyeLikeBtn.addEventListener('click', kanyeSaveLikesToStorage)
-taylorLikeBtn.addEventListener('click', taylorSaveLikesToStorage)
-kanyeDislikeBtn.addEventListener('click', kanyeSaveDislikesToStorage)
-taylorDislikeBtn.addEventListener('click', taylorSaveDislikesToStorage)
-kanyeFavoriteBtn.addEventListener('click', kanyeFavBtnHandler)
-taylorFavoriteBtn.addEventListener('click', taylorFavBtnHandler)
-  
+document.getElementById("selectKanye").addEventListener("click", kanyeStartQuotes);
+document.getElementById("selectTaylor").addEventListener("click", taylorStartQuotes);
 
+kanyeLikeBtn.addEventListener('click', kanyeSaveLikesToStorage);
+taylorLikeBtn.addEventListener('click', taylorSaveLikesToStorage);
+kanyeDislikeBtn.addEventListener('click', kanyeSaveDislikesToStorage);
+taylorDislikeBtn.addEventListener('click', taylorSaveDislikesToStorage);
+kanyeFavoriteBtn.addEventListener('click', kanyeFavBtnHandler);
+taylorFavoriteBtn.addEventListener('click', taylorFavBtnHandler);
+favoritesModalEl.addEventListener('click', buildFavorite);
+favoriteModalCloseBtn.addEventListener('click', removeAllFavorites);  
 
-
-  
-  // kanyeEl();
-  // taylorEl();
-  displayDate();
-  
+ //----ON LOAD FUNCTIONS---//
+displayDate();
