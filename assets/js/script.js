@@ -388,6 +388,12 @@ var favoriteQuotesObj = {
 // ----------Set selected quote to local storage---//
 
 var favoriteQuote = function() {
+  if(favoriteQuotesObj.quote.length === 0){
+    kanyeFavoriteBtn.setAttribute('value', "kanye-not-favorite")
+    kanyeFavClass.classList.remove('fav-btn')
+    return
+
+  } else {
   var getLocalStorage = JSON.parse(localStorage.getItem('favoriteQuotes'))
 
   if (getLocalStorage === null) {    
@@ -410,10 +416,11 @@ var favoriteQuote = function() {
     } else {
 
       localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
-    }          
+      }          
+    }
   }
    
-  }
+}
 // -----------------------------------------------//
 
 // ---------Delete "un" favorite quote-----------//
@@ -438,13 +445,10 @@ var deleteFavorite = function(){
     favoriteQuotesObj.quote.splice(storedFavorite,1)
     localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
 
-    
-      
-    
-    // if(favoriteQuotesObj.quote.length === 0) {   
-      
-    // } else{
-    //   localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotesObj))
+    favoriteQuotesObj ={
+      quote: []
+    }      
+ 
     }         
     
     
